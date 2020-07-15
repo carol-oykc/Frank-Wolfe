@@ -1,3 +1,4 @@
+% generage the problem in one code
 M_s = 1; % M_s increase, s increase, the corresponding components of c increase, the number of iterations increase
 M_s1 = 1; % M_s1 increase, s1 increase, the corresponding components of c decrease, the number of iterations increase
 M_lamda = 1; % M_lamda increase, lamda increase, all the components of c decrease, but it will not influence the number of iterations
