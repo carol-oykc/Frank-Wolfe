@@ -11,7 +11,7 @@ kmax = 10000000;
 n = 25; % the dimension of X
 
 % the accuracy
-E = linspace(-1,-4,4);
+E = linspace(-1,-5,5);
 
 % The number of zeros of optimal solution for box constraint
 X_box = [0.5, 0.25; 0.25, 0.5; 0.25, 0.25; 0.25, 0; 0, 0.25; 0, 0; 1, 0];
@@ -52,7 +52,7 @@ for constraint = [0,1]
                                     
                                     [X,fval,k] = frank_wolfe(X_opt,Q,c,X0,e,kmax,variant,step_rule,constraint,a);
                                     
-                                    j = j+1;
+                                    j = j+1
                                     
                                     result(j,1) = constraint;
                                     result(j,2) = seed;
@@ -89,14 +89,14 @@ for constraint = [0,1]
                         [X_opt,Q,c,X0_ave,X0_good,X0_bad] = generate_prob(n,Xn0,Xn1,M_s,M_lamda,M_A,Dn0,M_D,M_s1,constraint,seed);
                         
                         for variant = [0,1]                            
-                            for step_rule = [1,2,3,4]
+                            for step_rule = [1,2]
                                 for X0 = [X0_ave, X0_good, X0_bad]
                                     
                                     tic
                                     
                                     [X,fval,k] = frank_wolfe(X_opt,Q,c,X0,e,kmax,variant,step_rule,constraint,a);
                                     
-                                    j = j+ 1;
+                                    j = j+ 1
                                     result(j,1) = constraint;
                                     result(j,2) = seed;
                                     result(j,3) = e;
