@@ -1,10 +1,8 @@
 function [X,fval,k] = frank_wolfe(X_opt,Q,c,X0,e,kmax,variant,step_rule,constraint,a)
 % This is a function that implements the Frank Wolfe algorithm and 
-% its variants, including the classical FW and FW with away steps with four
-% different step size rules (well-studied step size, exact line search, 
-% inexact line search with Armijo condition, and inexact line search with
-% Wolfe conditions.), to solve the quadratic problem with box constraint
-% or unit simplex constraint
+% its variants, including the classical FW and FW with away steps with two
+% different step size rules (well-studied step size and exact line search), 
+% to solve the quadratic problem with box constraint or unit simplex constraint
 
 % min c'*x + 0.5*x'*Q*x   
 % box constrain: s.t low bound <= x <= upper bound
@@ -18,10 +16,8 @@ function [X,fval,k] = frank_wolfe(X_opt,Q,c,X0,e,kmax,variant,step_rule,constrai
 % kmax: maximum number of iterations
 % variant: the classical FW will be used if it's 0; the FW with
 %          away steps will be used if it's 1
-% step_rule: the prespecified step size rule of 2/(k+2) will be used if it's 1; the
-%            exact line search will be used if it's 2; the inexact line
-%            search with Armijo condition will be used if it's 3; the
-%            inexact line search with Wolfe conditions will be used if it's 4
+% step_rule: the pre-specified step size rule of 2/(k+2) will be used if it's 1; the
+%            exact line search will be used if it's 2
 % constraint: the box constraint will be used if it's 0, the unit simplex
 %             constraint will be used if it's 1.
 % a: if a=0, we will explore the convergence of the algorithm and output
@@ -129,14 +125,6 @@ while (k <= kmax)
             case 2
                 % exact line search
                 alphak = exact_linesearch(X,d,c,Q,alpha_max);
-                
-            case 3
-                % inexact line search with Armojo condition
-                alphak = LineSearchBacktrack(X, d, c, Q, alpha_max);
-                
-            case 4
-                % inexact line search with Wolfe conditions
-                alphak = LineSearchBisection(X, d, c, Q, alpha_max);
                 
         end
         

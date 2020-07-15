@@ -44,7 +44,7 @@ for constraint = [0,1]
                         [X_opt,Q,c,X0_ave,X0_good,X0_bad] = generate_prob(n,Xn0,Xn1,M_s,M_lamda,M_A,Dn0,M_D,M_s1,constraint,seed);
                         
                         for variant = [0,1]   
-                            for step_rule = [1,2,3,4]
+                            for step_rule = [1,2]
                                
                                 for X0 = [X0_ave, X0_good, X0_bad]
                                     
