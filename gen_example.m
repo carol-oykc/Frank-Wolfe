@@ -45,8 +45,13 @@ for constraint = [0,1]
                         
                         for variant = [0,1]   
                             for step_rule = [1,2]
-                               
-                                for X0 = [X0_ave, X0_good, X0_bad]
+                                
+                                if (Xn0+Xn1==0)
+                                    X0s = [X0_ave,X0_bad];
+                                else
+                                    X0s = [X0_ave, X0_good, X0_bad];
+                                end
+                                for X0 = X0s
                                     
                                     tic
                                     
@@ -90,7 +95,12 @@ for constraint = [0,1]
                         
                         for variant = [0,1]                            
                             for step_rule = [1,2]
-                                for X0 = [X0_ave, X0_good, X0_bad]
+                                if (Xn0==0)
+                                    X0s = [X0_ave,X0_bad];
+                                else
+                                    X0s = [X0_ave, X0_good, X0_bad];
+                                end
+                                for X0 = X0s
                                     
                                     tic
                                     
