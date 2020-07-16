@@ -157,12 +157,22 @@ switch constraint
         X0_good(ind_nonzero) = nonzero_X0;
 
         % Bad starting point: far from the optimal point
-        X0_bad = ones(n,1);
-        X0_bad(ind_one) = 0;
-        % Generate n-xn0-xn1 random positive numbers between [0,1]
-        nonzero_X0 = rand(n-Xn0-Xn1,1);
-        X0_bad(ind_nonzero) = nonzero_X0;
-
+        if (Xn0 == 0)            
+            [opt_min,opt_min_ind] = min(X_opt);
+            [opt_max,opt_max_ind] = max(X_opt);
+            if opt_min <= 1-opt_max
+                X0_bad(opt_min_ind) = round(opt_min);
+            else
+                X0_bad(opt_max_ind) = round(opt_max);
+            end
+            
+        else
+            X0_bad = ones(n,1);
+            X0_bad(ind_one) = 0;
+            % Generate n-xn0-xn1 random positive numbers between [0,1]
+            nonzero_X0 = rand(n-Xn0-Xn1,1);
+            X0_bad(ind_nonzero) = nonzero_X0;
+        end
         
     % Unit simplex constraint
     case 1
@@ -187,6 +197,7 @@ switch constraint
         else
             [~,opt_min] = min(X_opt);
             X0_bad(opt_min) = 1;
+            
         end
         
 end
