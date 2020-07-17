@@ -142,7 +142,7 @@ for constraint = [0,1]
     
 end
 
-names = ["constraint","seed", "accuracy", "Dn0","Xn0","Xn1","variant","step_rule","number of iterations","running time"];
+names = ["constraint","seed", "accuracy", "Dn0","Xn0","Xn1","variant","step_rule","number_of_iterations","running_time"];
 table1 = table(result(:,1),result(:,2),result(:,3),result(:,4),result(:,5),result(:,6),result(:,7),result(:,8),result(:,9),result(:,10),'VariableNames',names);
 X0_name = ("X0_location");
 table2 = table(X0_loc,'VariableNames',X0_name);
