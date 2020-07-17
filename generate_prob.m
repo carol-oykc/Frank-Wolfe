@@ -157,15 +157,13 @@ switch constraint
         X0_good(ind_nonzero) = nonzero_X0;
 
         % Bad starting point: far from the optimal point
-        if (Xn0 == 0)            
-            [opt_min,opt_min_ind] = min(X_opt);
-            [opt_max,opt_max_ind] = max(X_opt);
-            if opt_min <= 1-opt_max
-                X0_bad(opt_min_ind) = round(opt_min);
-            else
-                X0_bad(opt_max_ind) = round(opt_max);
-            end
-            
+        % If the optimal point is in the interior of the feasible region,
+        % the bad starting point would be the worst vertices
+        if (Xn0+Xn1 == 0)
+            X0_bad = 1-round(X_opt);
+        
+        % If the optimal point is on the boundary, flip the 0 and 1 to get
+        % the bad starting point
         else
             X0_bad = ones(n,1);
             X0_bad(ind_one) = 0;
