@@ -71,11 +71,11 @@ for constraint = [0,1]
                                     result(j,10) = toc;
                                     
                                     if (X0 == X0_ave)
-                                        X0_loc(j) = "X0_ave";
+                                        X0_loc(j) = 2;
                                     elseif (X0 == X0_good)
-                                        X0_loc(j) = "X0_good";
+                                        X0_loc(j) = 1;
                                     else
-                                        X0_loc(j) = "X0_bad";
+                                        X0_loc(j) = 3;
                                     end
                                     
                                     
@@ -119,11 +119,11 @@ for constraint = [0,1]
                                     result(j,10) = toc;
                                     
                                     if (X0 == X0_ave)
-                                        X0_loc(j) = "X0_ave";
+                                        X0_loc(j) = 2;
                                     elseif (X0 == X0_good)
-                                        X0_loc(j) = "X0_good";
+                                        X0_loc(j) = 1;
                                     else
-                                        X0_loc(j) = "X0_bad";
+                                        X0_loc(j) = 3;
                                     end
                                     
                                 end
