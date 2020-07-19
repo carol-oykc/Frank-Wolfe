@@ -29,7 +29,7 @@ X0_loc = strings([5000,1]);
 
 for constraint = [0,1]
     rng(123)
-    for seed = randperm(1000,10)  
+    for seed = randperm(1000,20)  
         for e = 10.^E
             for Dn0 = round(Dns*n) 
                 
@@ -148,5 +148,6 @@ X0_name = ("X0_location");
 table2 = table(X0_loc,'VariableNames',X0_name);
 
 result_table = [table1, table2];
-writetable(result_table,'C:\Users\s1964667\OneDrive - University of Edinburgh\summer project\final_result\result.csv')
+result_table.Xn0_1 = result_table.Xn0 + result_table.Xn1;
+writetable(result_table,'C:\Users\s1964667\OneDrive - University of Edinburgh\summer project\final_result\version3\result.csv')
 
